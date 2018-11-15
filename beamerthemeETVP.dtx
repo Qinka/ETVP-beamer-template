@@ -1,0 +1,192 @@
+% \iffalse meta-comment
+% Local Variables:
+% mode: doctex
+% TeX-master: t
+% End:
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+---------:| ---------------------------------------------------------------
+working:| Xidian University ETVP beamer theme.
+ Author:| Johann Lee
+ E-mail:| me@qinka.pro
+License:| Released under the LaTeX Project Public License v1.3c or later
+    See:| http://www.latex-project.org/lppl.txt
+\endpreamble
+\postamble
+Copyright (C) 2018 by Johann Lee <me@qinka.pro>
+---------------------------------------------------------------------------
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+	http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Johann Lee <me@qinka.pro>.
+
+This work consists of the files \jobname.dtx and \jobname.ins
+and the derived filebase \jobname.sty
+\endpostamble
+
+\usedir{tex/xelatex/xdu-etvp}
+\generate{
+	\file{\jobname.sty}{\from{\jobname.dtx}{style}}
+	\file{\jobname.cfg}{\from{\jobname.dtx}{config}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/xelatex/xdu-etvp}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+%</internal>
+% \iffalse
+% \fi
+%<*driver>
+\ProvidesFile{beamerthemeETVP.dtx}[2018/11/15, Johann Lee<me@qinka.pro>, Ver.0.1.0]
+%</driver>
+%<style>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<style>\ProvidesPackage{beamerthemeETVP}
+%<config>\ProvidesFile{\jobname.cfg}
+%<style|config>[2018/11/15, Johann Lee<me@qinka.pro>, Ver.0.1.0]
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{xeCJK}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{\jobname.dtx}
+  \PrintChanges
+  \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{398}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+%% \changes{<+version+>}{<+date+>}{Converted to DTX file}
+%
+% \DoNotIndex{\newcommand,\newenvironment}
+%%\providecommand*{\url}{\texttt}
+% \GetFileInfo{\jobname.dtx}
+%% \title{The \textsf{\jobname} package}
+%% \author{<+author+> \\ \url{<+email+>}}
+% \date{\fileversion~from \filedate}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% Put text here.
+%
+% \section{Usage}
+%
+% Put text here.
+%
+%
+% \DescribeMacro{\vskpparbox}
+%
+%
+% \DescribeMacro{\rhparbox}
+%
+%
+% \DescribeMacro{\rihparbox}
+%
+%
+% \DescribeMacro{\riparbox}
+%
+%
+% \DescribeMacro{\newrt}
+%
+%
+% \DescribeMacro{\subreport}
+%
+%
+% \DescribeMacro{\document}
+%
+%
+% \DescribeMacro{\enddocument}
+%
+%
+% \StopEventually{}
+%
+% \section{Implementation}
+%
+% \iffalse
+%<*style>
+% \fi
+%% The beamer theme of ETVP.
+%%Copyright (C) 2018, Johann Lee <me@qinka.pro>(maintainer)
+%
+%  \begin{macro}
+%    \begin{macrocode}
+\AtEndOfPackage{\input{beamerthemeETVP.cfg}}
+\mode<presentation>
+%    \end{macrocode}
+% Settings
+%    \begin{macrocode}
+\setbeamercovered{dynamic}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+%    \end{macrocode}
+% Headline
+%    \begin{macrocode}
+\defbeamertemplate*{headline}{etvp headline}
+{%
+    \leavevmode%
+    \hbox{%
+    \includegraphics[width=\paperwidth]{ETVP_headline}}	% set headline
+}%
+%    \end{macrocode}
+% Frame title
+%    \begin{macrocode}
+\setbeamertemplate{frametitle}%
+    {%
+    \,\insertframetitle%
+    \par\noindent%
+    \includegraphics[width=0.86\paperwidth]{frame_title_line}%
+    \par%
+}%
+%    \end{macrocode}
+% End of implementation
+%    \begin{macrocode}
+\mode
+<all>
+%    \end{macrocode}
+%  \end{macro}
+%
+%  \iffalse
+%</style>
+%  \fi
+%
+%<*config>
+%</config>
+%
+%  \Finale
+\endinput

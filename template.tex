@@ -1,0 +1,68 @@
+\documentclass[10pt, mathserif]{beamer}
+\usepackage{ctex}
+\usepackage{amsmath, amsfonts, amssymb}	% math equations, symbols
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xeCJK}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 在这里添加额外的导言区
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme{ETVP}
+
+\begin{document}
+
+    %%%% 首页 &&&&
+    \title[abbreviation]{替换这里的标题}
+    \author{ 替换 \\ me@qinka.pro}
+    \institute[ETVP]{\normalsize
+        西安电子科技大学计算机科学与技术学院 \\嵌入式技术与视觉处理研究中心 \\
+        Embedded Technology \& Vision Processing Research Center, \\
+        School of Computer Science and Technology, Xidian Univ.
+        }
+
+    %%% 各节之前添加 “目录” &&&
+    \AtBeginSection[]
+    {
+    \begin{frame}{Outline 目录}
+        \tableofcontents[currentsection, currentsubsection]
+    \end{frame}
+    }
+
+    %%% 标题页 &&&
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \section{一节}
+    \begin{frame}{frame 标题}
+        内容
+    \end{frame}
+
+    \section{References 参考文献}
+    \begin{frame}[allowframebreaks]{Bibliography}
+        中文内容显示
+        The not so short introduction to LATEX2$\varepsilon$ \cite{Oetiker2015Latex} \\
+        ~\\
+        The texbook \cite{knuth1984texbook}
+        \label{Reference}
+        \bibliographystyle{apalike}	   % different styles, such as ieee
+    \end{frame}
+
+    \section{Thanks 致谢}
+    \begin{frame}{End}
+        Thanks for your listening. \\
+        感谢！
+    \end{frame}
+
+    \begin{frame}{文档}
+        \begin{itemize}
+            \item \href{https://www.ctan.org}{The Comprehensive \TeX Archive Network}
+            \item \href{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}%
+                {Beamer 官方文档}
+        \end{itemize}
+    \end{frame}
+
+\end{document} 
