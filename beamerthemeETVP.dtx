@@ -4,7 +4,7 @@
 % TeX-master: t
 % End:
 %<*install>
-\input docstrip.tex
+\input{docstrip.tex}
 \keepsilent
 \askforoverwritefalse
 \preamble
@@ -16,7 +16,7 @@ License:| Released under the LaTeX Project Public License v1.3c or later
     See:| http://www.latex-project.org/lppl.txt
 \endpreamble
 \postamble
-Copyright (C) 2018 by Johann Lee <me@qinka.pro>
+Copyright (C) 2021 by Johann Lee <me@qinka.pro>
 ---------------------------------------------------------------------------
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either version 1.3
@@ -34,7 +34,7 @@ This work consists of the files \jobname.dtx and \jobname.ins
 and the derived filebase \jobname.sty
 \endpostamble
 
-\usedir{tex/xelatex/xdu-etvp}
+\usedir{tex/xelatex/xdu/etvp}
 \generate{
 	\file{\jobname.sty}{\from{\jobname.dtx}{style}}
 	\file{\jobname.cfg}{\from{\jobname.dtx}{config}}
@@ -42,7 +42,7 @@ and the derived filebase \jobname.sty
 %</install>
 %<install>\endbatchfile
 %<*internal>
-\usedir{source/xelatex/xdu-etvp}
+\usedir{source/xelatex/xdu/etvp}
 \generate{
   \file{\jobname.ins}{\from{\jobname.dtx}{install}}
 }
@@ -51,21 +51,21 @@ and the derived filebase \jobname.sty
 % \iffalse
 % \fi
 %<*driver>
-\ProvidesFile{beamerthemeETVP.dtx}[2018/11/15, Johann Lee<me@qinka.pro>, Ver.0.1.0]
+\ProvidesFile{beamerthemeETVP.dtx}[2021/04/29, Johann Lee<me@qinka.pro>, Ver.0.1.0]
 %</driver>
 %<style>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<style>\ProvidesPackage{beamerthemeETVP}
 %<config>\ProvidesFile{\jobname.cfg}
-%<style|config>[2018/11/15, Johann Lee<me@qinka.pro>, Ver.0.1.0]
+%<style|config>[2021/04/29, Johann Lee<me@qinka.pro>, Ver.0.1.1]
 %<*driver>
-\documentclass{ltxdoc}
-\usepackage{xeCJK}
-\EnableCrossrefs
-\CodelineIndex
-\RecordChanges
+\documentclass{ctexart}
+^^A\usepackage{ctex}
+^^A\EnableCrossrefs
+^^A\CodelineIndex
+^^A\RecordChanges
 \begin{document}
   \DocInput{\jobname.dtx}
-  \PrintChanges
+^^A  \PrintChanges
   \PrintIndex
 \end{document}
 %</driver>
@@ -90,13 +90,11 @@ and the derived filebase \jobname.sty
 %   Right brace   \}     Tilde         \~}
 %
 %
-%% \changes{<+version+>}{<+date+>}{Converted to DTX file}
+% \changes{<+version+>}{<+date+>}{Converted to DTX file}
 %
-% \DoNotIndex{\newcommand,\newenvironment}
-%%\providecommand*{\url}{\texttt}
 % \GetFileInfo{\jobname.dtx}
-%% \title{The \textsf{\jobname} package}
-%% \author{<+author+> \\ \url{<+email+>}}
+% \title{The \textsf{\jobname} package}
+% \author{<+author+> \\ \url{<+email+>}}
 % \date{\fileversion~from \filedate}
 %
 % \maketitle
@@ -109,31 +107,6 @@ and the derived filebase \jobname.sty
 %
 % Put text here.
 %
-%
-% \DescribeMacro{\vskpparbox}
-%
-%
-% \DescribeMacro{\rhparbox}
-%
-%
-% \DescribeMacro{\rihparbox}
-%
-%
-% \DescribeMacro{\riparbox}
-%
-%
-% \DescribeMacro{\newrt}
-%
-%
-% \DescribeMacro{\subreport}
-%
-%
-% \DescribeMacro{\document}
-%
-%
-% \DescribeMacro{\enddocument}
-%
-%
 % \StopEventually{}
 %
 % \section{Implementation}
@@ -142,10 +115,16 @@ and the derived filebase \jobname.sty
 %<*style>
 % \fi
 %% The beamer theme of ETVP.
-%%Copyright (C) 2018, Johann Lee <me@qinka.pro>(maintainer)
+%%Copyright (C) 2021, Johann Lee <me@qinka.pro>(maintainer)
 %
 %  \begin{macro}
 %    \begin{macrocode}
+\RequirePackage{tikz}
+\RequirePackage{ctex}
+
+\definecolor{ETVPblue}{RGB}{91,155,213}
+\definecolor{ETVPred}{RGB}{192,0,0}
+
 \AtEndOfPackage{\input{beamerthemeETVP.cfg}}
 \mode<presentation>
 %    \end{macrocode}
@@ -161,7 +140,13 @@ and the derived filebase \jobname.sty
 {%
     \leavevmode%
     \hbox{%
-    \includegraphics[width=\paperwidth]{ETVP_headline}}	% set headline
+    \begin{tikzpicture}
+        \useasboundingbox (0,0) rectangle(\paperwidth,.1\paperheight);
+        \fill[color=ETVPblue] (0,.01\paperheight) rectangle (.025\paperwidth, .09\paperheight);
+        \fill[color=ETVPblue] (.3\paperwidth,.01\paperheight) rectangle (\paperwidth, .09\paperheight);
+        \node at (.16\paperwidth,.01\paperheight+.037\paperheight) {\includegraphics[width=0.273\paperwidth]{XDU_logo_light.pdf}};
+        \node[color=white] at (\paperwidth-.35\paperheight,.01\paperheight+.037\paperheight) {\raggedleft \fontsize{.045\paperheight}{.08\paperheight} \kaishu 嵌入式技术与视觉处理研究中心};
+    \end{tikzpicture}
 }%
 %    \end{macrocode}
 % Frame title
@@ -170,10 +155,23 @@ and the derived filebase \jobname.sty
     {%
     \,\insertframetitle%
     \par\noindent%
-    \includegraphics[width=0.86\paperwidth]{frame_title_line}%
+    \begin{tikzpicture}
+      \useasboundingbox (0,0) rectangle(\paperwidth,0);
+      \fill[color=ETVPred] (0,.019\paperheight) rectangle (.86\paperwidth, .02\paperheight);
+      \fill[color=ETVPred] (0,0) rectangle (.46\paperwidth, .02\paperheight);
+    \end{tikzpicture}
     \par%
 }%
 %    \end{macrocode}
+%
+% Without headline
+%    \begin{macrocode}
+\newenvironment{withoutheadline}{
+	\setbeamertemplate{headline}[default]
+	\def\beamer@entrycode{\vspace*{-\headheight}}
+}{}
+%    \end{macrocode}
+%
 % End of implementation
 %    \begin{macrocode}
 \mode
