@@ -139,14 +139,13 @@ and the derived filebase \jobname.sty
 \defbeamertemplate*{headline}{etvp headline}
 {%
     \leavevmode%
-    \hbox{%
-    \begin{tikzpicture}
+    \hbox{\begin{tikzpicture}
         \useasboundingbox (0,0) rectangle(\paperwidth,.1\paperheight);
         \fill[color=ETVPblue] (0,.01\paperheight) rectangle (.025\paperwidth, .09\paperheight);
         \fill[color=ETVPblue] (.3\paperwidth,.01\paperheight) rectangle (\paperwidth, .09\paperheight);
         \node at (.16\paperwidth,.01\paperheight+.037\paperheight) {\includegraphics[width=0.273\paperwidth]{XDU_logo_light.pdf}};
         \node[color=white] at (\paperwidth-.35\paperheight,.01\paperheight+.037\paperheight) {\raggedleft \fontsize{.045\paperheight}{.08\paperheight} \kaishu 嵌入式技术与视觉处理研究中心};
-    \end{tikzpicture}
+    \end{tikzpicture}}%
 }%
 %    \end{macrocode}
 % Frame title
@@ -159,7 +158,7 @@ and the derived filebase \jobname.sty
       \useasboundingbox (0,0) rectangle(\paperwidth,0);
       \fill[color=ETVPred] (0,.019\paperheight) rectangle (.86\paperwidth, .02\paperheight);
       \fill[color=ETVPred] (0,0) rectangle (.46\paperwidth, .02\paperheight);
-    \end{tikzpicture}
+    \end{tikzpicture}%
     \par%
 }%
 %    \end{macrocode}
